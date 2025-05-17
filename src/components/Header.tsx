@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link as UiLink } from './ui/Link';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +11,19 @@ const Header = () => {
   const [lang, setLang] = useState<'sv' | 'en'>('sv');
   const [showLang, setShowLang] = useState(false);
 
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
 
   return (
     <header
@@ -35,14 +44,32 @@ const Header = () => {
             <UiLink href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</UiLink>
             <UiLink href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</UiLink>
             <UiLink href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
-            <RouterLink
-              to="/login"
-              className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
-            >
-              {lang === 'sv' ? 'Börja nu' : 'Get Started'}
-            </RouterLink>
 
-            {/* Desktop flag dropdown */}
+            {user ? (
+              <>
+                <RouterLink
+                  to="/dashboard"
+                  className="text-white font-semibold hover:text-green-400 transition-colors"
+                >
+                  Dashboard
+                </RouterLink>
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 hover:bg-red-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
+                >
+                  Logga ut
+                </button>
+              </>
+            ) : (
+              <RouterLink
+                to="/login"
+                className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
+              >
+                {lang === 'sv' ? 'Börja nu' : 'Get Started'}
+              </RouterLink>
+            )}
+
+            {/* Språkflagga desktop */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
                 <Flag
@@ -83,7 +110,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Hamburger */}
+          {/* Burger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white p-2"
@@ -94,7 +121,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile nav */}
       {isOpen && (
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
@@ -107,15 +134,37 @@ const Header = () => {
             <UiLink href="#about" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Om oss' : 'About'}
             </UiLink>
-            <RouterLink
-              to="/login"
-              onClick={() => setIsOpen(false)}
-              className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
-            >
-              {lang === 'sv' ? 'Börja nu' : 'Get Started'}
-            </RouterLink>
 
-            {/* Mobile flag dropdown */}
+            {user ? (
+              <>
+                <RouterLink
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white font-semibold text-center"
+                >
+                  Dashboard
+                </RouterLink>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full"
+                >
+                  Logga ut
+                </button>
+              </>
+            ) : (
+              <RouterLink
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full text-center"
+              >
+                {lang === 'sv' ? 'Börja nu' : 'Get Started'}
+              </RouterLink>
+            )}
+
+            {/* Mobile flag */}
             <div className="pt-2 relative w-full flex justify-center">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
                 <Flag
