@@ -41,37 +41,48 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Flag dropdown */}
+            {/* Desktop flag dropdown */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
-                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
+                <Flag
+                  code={lang === 'sv' ? 'SE' : 'US'}
+                  style={{
+                    width: 32,
+                    height: 20,
+                    objectFit: 'cover',
+                    borderRadius: 6,
+                  }}
+                />
               </button>
+
               {showLang && (
-                <div className="absolute right-0 mt-2 bg-white text-black shadow rounded w-40 z-50">
+                <div className="absolute right-0 mt-2 bg-gray-800 text-white shadow-md rounded z-50 w-40">
                   <button
                     onClick={() => {
                       setLang('sv');
                       setShowLang(false);
                     }}
-                    className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+                    className="flex items-center px-4 py-2 hover:bg-gray-700 w-full text-left"
                   >
-                    <Flag code="SE" style={{ width: 20, marginRight: 8 }} /> Svenska
+                    <Flag code="SE" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+                    Svenska
                   </button>
                   <button
                     onClick={() => {
                       setLang('en');
                       setShowLang(false);
                     }}
-                    className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+                    className="flex items-center px-4 py-2 hover:bg-gray-700 w-full text-left"
                   >
-                    <Flag code="US" style={{ width: 20, marginRight: 8 }} /> English
+                    <Flag code="US" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+                    English
                   </button>
                 </div>
               )}
             </div>
           </nav>
 
-          {/* Hamburger */}
+          {/* Mobile hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white p-2"
@@ -103,14 +114,44 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Mobile flag toggle */}
-            <div className="flex justify-center pt-2">
-              <button
-                onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-                className="focus:outline-none"
-              >
-                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
+            {/* Mobile flag dropdown */}
+            <div className="pt-2 relative w-full flex justify-center">
+              <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
+                <Flag
+                  code={lang === 'sv' ? 'SE' : 'US'}
+                  style={{
+                    width: 32,
+                    height: 20,
+                    objectFit: 'cover',
+                    borderRadius: 6,
+                  }}
+                />
               </button>
+
+              {showLang && (
+                <div className="absolute top-full mt-2 bg-gray-800 text-white shadow-md rounded z-50 w-40">
+                  <button
+                    onClick={() => {
+                      setLang('sv');
+                      setShowLang(false);
+                    }}
+                    className="flex items-center px-4 py-2 hover:bg-gray-700 w-full text-left"
+                  >
+                    <Flag code="SE" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+                    Svenska
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLang('en');
+                      setShowLang(false);
+                    }}
+                    className="flex items-center px-4 py-2 hover:bg-gray-700 w-full text-left"
+                  >
+                    <Flag code="US" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+                    English
+                  </button>
+                </div>
+              )}
             </div>
           </nav>
         </div>
