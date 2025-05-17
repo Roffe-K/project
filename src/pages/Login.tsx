@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -36,10 +36,17 @@ const Login = () => {
         />
         <button
           onClick={handleLogin}
-          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded font-semibold"
+          className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded font-semibold mb-4"
         >
           Logga in
         </button>
+
+        <p className="text-center text-sm text-gray-300">
+          Har du inget konto?{' '}
+          <Link to="/register" className="text-green-400 hover:underline">
+            Skapa konto
+          </Link>
+        </p>
       </div>
     </div>
   );
