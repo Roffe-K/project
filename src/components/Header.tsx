@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
+import Flag from 'react-world-flags';
 import { Link } from './ui/Link';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState<'sv' | 'en'>('sv');
+  const [showLang, setShowLang] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -27,7 +29,7 @@ const Header = () => {
             <span className="text-white font-bold text-xl">PartyPrep</span>
           </div>
 
-          {/* Desktop nav */}
+          {/* Desktop navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
             <Link href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</Link>
             <Link href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</Link>
@@ -39,20 +41,41 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Language flag button */}
-            <button
-              onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-              className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
-            >
-              {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
-            </button>
+            {/* Flag dropdown */}
+            <div className="relative ml-4">
+              <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
+                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 28, borderRadius: '50%' }} />
+              </button>
+              {showLang && (
+                <div className="absolute right-0 mt-2 bg-white text-black shadow rounded w-40 z-50">
+                  <button
+                    onClick={() => {
+                      setLang('sv');
+                      setShowLang(false);
+                    }}
+                    className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+                  >
+                    <Flag code="SE" style={{ width: 20, marginRight: 8 }} /> Svenska
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLang('en');
+                      setShowLang(false);
+                    }}
+                    className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+                  >
+                    <Flag code="US" style={{ width: 20, marginRight: 8 }} /> English
+                  </button>
+                </div>
+              )}
+            </div>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white p-2"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -80,13 +103,13 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Mobile language flag */}
+            {/* Mobile flag toggle */}
             <div className="flex justify-center pt-2">
               <button
                 onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-                className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
+                className="focus:outline-none"
               >
-                {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
+                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 28, borderRadius: '50%' }} />
               </button>
             </div>
           </nav>
