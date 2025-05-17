@@ -52,9 +52,9 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="#games">Games</Link>
-            <Link href="#drinks">Drinks</Link>
-            <Link href="#about">About</Link>
+            <Link href="#games">Spel</Link>
+            <Link href="#drinks">Drinkar</Link>
+            <Link href="#about">Om oss</Link>
             <Link 
               href="#get-started" 
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
@@ -72,9 +72,9 @@ const Header = () => {
         }`}
       >
         <nav className="flex flex-col py-4 px-4 space-y-4">
-          <Link href="#games" onClick={() => setIsOpen(false)}>Games</Link>
-          <Link href="#drinks" onClick={() => setIsOpen(false)}>Drinks</Link>
-          <Link href="#about" onClick={() => setIsOpen(false)}>About</Link>
+          <Link href="#games" onClick={() => setIsOpen(false)}>Spel</Link>
+          <Link href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</Link>
+          <Link href="#about" onClick={() => setIsOpen(false)}>Om oss</Link>
           <Link 
             href="#get-started" 
             onClick={() => setIsOpen(false)}
