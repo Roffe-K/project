@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import GamesSection from './components/GamesSection';
@@ -6,20 +10,20 @@ import DrinksSection from './components/DrinksSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
-function App() {
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+
+const LandingPage = () => {
   useEffect(() => {
-    // Update document title
     document.title = 'PartyPrep - Games & Drinks';
-    
-    // Add smooth scrolling
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href') || '');
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
+          target.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
@@ -37,6 +41,28 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+};
 
 export default App;
