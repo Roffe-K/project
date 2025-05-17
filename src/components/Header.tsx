@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, GlassWater, Menu, X } from 'lucide-react';
 import { Link } from './ui/Link';
 
-interface HeaderProps {
-  hideGetStarted?: boolean;
-}
-
-const Header: React.FC<HeaderProps> = ({ hideGetStarted }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -79,15 +75,13 @@ const Header: React.FC<HeaderProps> = ({ hideGetStarted }) => {
           <Link href="#games" onClick={() => setIsOpen(false)}>Games</Link>
           <Link href="#drinks" onClick={() => setIsOpen(false)}>Drinks</Link>
           <Link href="#about" onClick={() => setIsOpen(false)}>About</Link>
-          {!hideGetStarted && (
-            <Link 
-              href="#get-started" 
-              onClick={() => setIsOpen(false)}
-              className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
-            >
-              Get Started
-            </Link>
-          )}
+          <Link 
+            href="#get-started" 
+            onClick={() => setIsOpen(false)}
+            className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
+          >
+            Get Started
+          </Link>
         </nav>
       </div>
     </header>
