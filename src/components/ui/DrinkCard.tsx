@@ -18,8 +18,8 @@ const DrinkCard: React.FC<DrinkProps> = ({ drink }) => {
 
   return (
     <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 group">
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/3 h-48 md:h-auto relative">
+      <div className="flex flex-col">
+        <div className="md:w-1/3 h-64 relative">
           <img 
             src={drink.image} 
             alt={drink.title} 
