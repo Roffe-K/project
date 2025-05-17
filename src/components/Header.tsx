@@ -36,7 +36,7 @@ const Header = () => {
             <UiLink href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</UiLink>
             <UiLink href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
             <RouterLink
-              to="/register"
+              to="/login"
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
@@ -108,7 +108,7 @@ const Header = () => {
               {lang === 'sv' ? 'Om oss' : 'About'}
             </UiLink>
             <RouterLink
-              to="/register"
+              to="/login"
               onClick={() => setIsOpen(false)}
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
             >
