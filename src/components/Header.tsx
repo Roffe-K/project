@@ -57,7 +57,7 @@ const Header = () => {
             <Link href="#about">Om oss</Link>
             <Link 
               href="#get-started" 
-              className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
+              className="hidden lg:inline-flex bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
             >
               Get Started
             </Link>
