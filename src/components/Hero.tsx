@@ -7,8 +7,8 @@ const Hero = () => {
       <div className="container mx-auto">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Planera nästa förfest <br className="hidden sm:block" />
-            <span className="text-green-400">på några minuter</span>
+            Planera nästa förfest på <br className="hidden sm:block" />
+            <span className="text-green-400"> några minuter</span>
           </h1>
           
           <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
