@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
 import { Link } from './ui/Link';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ const Header = () => {
             <Link href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</Link>
             <Link href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</Link>
             <Link
-              href="#get-started"
+              href="#register"
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
