@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
-import { Link } from './ui/Link';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Link as UiLink } from './ui/Link';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,17 +30,17 @@ const Header = () => {
             <span className="text-white font-bold text-xl">PartyPrep</span>
           </div>
 
-          {/* Desktop navigation */}
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <Link href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</Link>
-            <Link href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</Link>
-            <Link href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</Link>
-            <Link
-              href="#register"
+            <UiLink href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</UiLink>
+            <UiLink href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</UiLink>
+            <UiLink href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
+            <RouterLink
+              to="/register"
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
-            </Link>
+            </RouterLink>
 
             {/* Desktop flag dropdown */}
             <div className="relative ml-4">
@@ -83,7 +83,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white p-2"
@@ -98,22 +98,22 @@ const Header = () => {
       {isOpen && (
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
-            <Link href="#games" onClick={() => setIsOpen(false)}>
+            <UiLink href="#games" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Spel' : 'Games'}
-            </Link>
-            <Link href="#drinks" onClick={() => setIsOpen(false)}>
+            </UiLink>
+            <UiLink href="#drinks" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Drinkar' : 'Drinks'}
-            </Link>
-            <Link href="#about" onClick={() => setIsOpen(false)}>
+            </UiLink>
+            <UiLink href="#about" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Om oss' : 'About'}
-            </Link>
-            <Link
-              href="#get-started"
+            </UiLink>
+            <RouterLink
+              to="/register"
               onClick={() => setIsOpen(false)}
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
-            </Link>
+            </RouterLink>
 
             {/* Mobile flag dropdown */}
             <div className="pt-2 relative w-full flex justify-center">
