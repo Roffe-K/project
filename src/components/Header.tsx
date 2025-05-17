@@ -41,8 +41,8 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <UiLink href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</UiLink>
-            <UiLink href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</UiLink>
+            <UiLink href="#games">{lang === 'sv' ? 'Spel' : 'Games'} {!user && <span className="ml-1">🔒</span>}</UiLink>
+            <UiLink href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'} {!user && <span className="ml-1">🔒</span>}</UiLink>
             <UiLink href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
 
             {user ? (
@@ -126,10 +126,10 @@ const Header = () => {
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
             <UiLink href="#games" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Spel' : 'Games'}
+              {lang === 'sv' ? 'Spel' : 'Games'} {!user && <span className="ml-1">🔒</span>}
             </UiLink>
             <UiLink href="#drinks" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Drinkar' : 'Drinks'}
+              {lang === 'sv' ? 'Drinkar' : 'Drinks'} {!user && <span className="ml-1">🔒</span>}
             </UiLink>
             <UiLink href="#about" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Om oss' : 'About'}
