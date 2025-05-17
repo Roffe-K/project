@@ -44,7 +44,7 @@ const Header = () => {
             {/* Flag dropdown */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
-                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 28, borderRadius: '50%' }} />
+                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
               </button>
               {showLang && (
                 <div className="absolute right-0 mt-2 bg-white text-black shadow rounded w-40 z-50">
@@ -109,7 +109,7 @@ const Header = () => {
                 onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
                 className="focus:outline-none"
               >
-                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 28, borderRadius: '50%' }} />
+                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
               </button>
             </div>
           </nav>
