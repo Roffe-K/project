@@ -44,11 +44,6 @@ const DrinkCard: React.FC<DrinkProps> = ({ drink }) => {
           <h3 className="text-xl font-semibold text-white mb-2">{drink.title}</h3>
           <p className="text-gray-300 mb-4">{drink.description}</p>
 
-          <div className="flex items-center text-sm text-gray-400 mb-4">
-            <Clock className="h-4 w-4 mr-1" />
-            <span>{drink.preparationTime} preparation</span>
-          </div>
-
           <div className={`transition-all duration-300 overflow-hidden ${expanded ? 'max-h-48' : 'max-h-0'}`}>
             <div className="mt-4 mb-4">
               <p className="text-sm font-medium text-gray-300 mb-2">Ingredients:</p>
