@@ -5,16 +5,16 @@ import DrinkCard from './ui/DrinkCard';
 const drinks = [
   {
     id: 1,
-    title: 'Tropical Punch',
-    description: 'A refreshing blend of tropical fruits with a hint of rum.',
-    ingredients: ['Rum', 'Pineapple juice', 'Orange juice', 'Grenadine', 'Lime'],
+    title: 'Dyngnacke',
+    description: 'Namnet säger allt. Du är så trött på hela skiten nu. Den här veckan har varit kass och nu får det fan räcka. Du tänker inte lyssna på några jävla råd. I kväll är det en all out, så jävla enkelt är det. 70% valfri vodka. 30% sprite. ',
+    ingredients: ['7 delar valfri vodka', '3 delar sprite'],
     preparationTime: '5 min',
     alcoholic: true,
     image: 'https://images.pexels.com/photos/2795026/pexels-photo-2795026.jpeg'
   },
   {
     id: 2,
-    title: 'Berry Blast Mocktail',
+    title: 'Lidingö Ice Tea',
     description: 'A delicious non-alcoholic blend of mixed berries and citrus.',
     ingredients: ['Mixed berries', 'Lemon juice', 'Soda water', 'Sugar syrup', 'Mint'],
     preparationTime: '5 min',
@@ -23,7 +23,7 @@ const drinks = [
   },
   {
     id: 3,
-    title: 'Classic Mojito',
+    title: 'Klitoribbean',
     description: 'The timeless Cuban highball with rum, mint, and lime.',
     ingredients: ['White rum', 'Mint leaves', 'Lime juice', 'Sugar', 'Soda water'],
     preparationTime: '8 min',
