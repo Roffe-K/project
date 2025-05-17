@@ -5,12 +5,11 @@ import { Link } from './ui/Link';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [lang, setLang] = useState<'sv' | 'en'>('sv');
+  const [showLang, setShowLang] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -30,16 +29,48 @@ const Header = () => {
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="#games">Spel</Link>
-            <Link href="#drinks">Drinkar</Link>
-            <Link href="#about">Om oss</Link>
+          <nav className="hidden lg:flex items-center space-x-6">
+            <Link href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</Link>
+            <Link href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</Link>
+            <Link href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</Link>
             <Link
               href="#get-started"
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full"
             >
-              Börja nu
+              {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
+
+            {/* Language Switcher */}
+            <div className="relative ml-4">
+              <button
+                onClick={() => setShowLang(!showLang)}
+                className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
+              >
+                {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
+              </button>
+              {showLang && (
+                <div className="absolute right-0 mt-2 bg-white text-black shadow-md rounded z-50 overflow-hidden">
+                  <button
+                    onClick={() => {
+                      setLang('sv');
+                      setShowLang(false);
+                    }}
+                    className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  >
+                    🇸🇪 Svenska
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLang('en');
+                      setShowLang(false);
+                    }}
+                    className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  >
+                    🇺🇸 English
+                  </button>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile hamburger button */}
@@ -58,20 +89,20 @@ const Header = () => {
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
             <Link href="#games" onClick={() => setIsOpen(false)}>
-              Spel
+              {lang === 'sv' ? 'Spel' : 'Games'}
             </Link>
             <Link href="#drinks" onClick={() => setIsOpen(false)}>
-              Drinkar
+              {lang === 'sv' ? 'Drinkar' : 'Drinks'}
             </Link>
             <Link href="#about" onClick={() => setIsOpen(false)}>
-              Om oss
+              {lang === 'sv' ? 'Om oss' : 'About'}
             </Link>
             <Link
               href="#get-started"
               onClick={() => setIsOpen(false)}
               className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
             >
-              Börja nu
+              {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
           </nav>
         </div>
