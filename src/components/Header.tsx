@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
+import { Flag } from 'react-flagpack';
 import { Link } from './ui/Link';
 
 const Header = () => {
@@ -13,6 +14,37 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const FlagIcon = () => (
+    <Flag country={lang === 'sv' ? 'SE' : 'US'} size="L" hasDropShadow={false} />
+  );
+
+  const LangDropdown = () => (
+    <div className="relative ml-4">
+      <button
+        onClick={() => setIsOpen(false)}
+        className="flex items-center rounded-full focus:outline-none"
+      >
+        <FlagIcon />
+      </button>
+      <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
+        <button
+          onClick={() => setLang('sv')}
+          className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
+        >
+          <Flag country="SE" size="S" className="mr-2" />
+          Svenska
+        </button>
+        <button
+          onClick={() => setLang('en')}
+          className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
+        >
+          <Flag country="US" size="S" className="mr-2" />
+          English
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -21,13 +53,12 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <Party className="h-8 w-8 text-green-400 mr-2" />
             <span className="text-white font-bold text-xl">PartyPrep</span>
           </div>
 
-          {/* Desktop nav */}
+          {/* Desktop */}
           <nav className="hidden lg:flex items-center space-x-6">
             <Link href="#games">{lang === 'sv' ? 'Spel' : 'Games'}</Link>
             <Link href="#drinks">{lang === 'sv' ? 'Drinkar' : 'Drinks'}</Link>
@@ -38,21 +69,15 @@ const Header = () => {
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
-
-            {/* Language flag button */}
-            <button
-              onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-              className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
-            >
-              {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
-            </button>
+            {/* Desktop flag */}
+            <LangDropdown />
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden text-white p-2"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -79,14 +104,13 @@ const Header = () => {
             >
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
-
-            {/* Mobile language flag */}
+            {/* Mobile flag toggle */}
             <div className="flex justify-center pt-2">
               <button
                 onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-                className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
+                className="rounded-full"
               >
-                {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
+                <FlagIcon />
               </button>
             </div>
           </nav>
