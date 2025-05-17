@@ -80,7 +80,7 @@ const Header = () => {
             onClick={() => setIsOpen(false)}
             className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
           >
-            Get Started
+            Börja nu
           </Link>
         </nav>
       </div>
