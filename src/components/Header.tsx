@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
-import { Flag } from 'react-flagpack';
 import { Link } from './ui/Link';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState<'sv' | 'en'>('sv');
-  const [showLang, setShowLang] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -41,39 +39,13 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Desktop flag dropdown */}
-            <div className="relative ml-4">
-              <button
-                onClick={() => setShowLang(!showLang)}
-                className="rounded-full"
-              >
-                <Flag country={lang === 'sv' ? 'SE' : 'US'} size="l" />
-              </button>
-              {showLang && (
-                <div className="absolute right-0 mt-2 bg-white text-black shadow-md rounded z-50 overflow-hidden min-w-[140px]">
-                  <button
-                    onClick={() => {
-                      setLang('sv');
-                      setShowLang(false);
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left"
-                  >
-                    <Flag country="SE" size="m" />
-                    Svenska
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLang('en');
-                      setShowLang(false);
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left"
-                  >
-                    <Flag country="US" size="m" />
-                    English
-                  </button>
-                </div>
-              )}
-            </div>
+            {/* Language flag button */}
+            <button
+              onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
+              className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
+            >
+              {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
+            </button>
           </nav>
 
           {/* Mobile hamburger */}
@@ -108,13 +80,13 @@ const Header = () => {
               {lang === 'sv' ? 'Börja nu' : 'Get Started'}
             </Link>
 
-            {/* Mobile flag switcher */}
+            {/* Mobile language flag */}
             <div className="flex justify-center pt-2">
               <button
                 onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-                className="rounded-full"
+                className="text-2xl hover:ring-2 ring-green-400 rounded-full transition"
               >
-                <Flag country={lang === 'sv' ? 'SE' : 'US'} size="l" />
+                {lang === 'sv' ? '🇸🇪' : '🇺🇸'}
               </button>
             </div>
           </nav>
