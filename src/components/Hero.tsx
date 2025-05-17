@@ -7,13 +7,13 @@ const Hero = () => {
       <div className="container mx-auto">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Plan Your Perfect Party <br className="hidden sm:block" />
-            <span className="text-green-400">In Minutes</span>
+            Planera nästa förfest <br className="hidden sm:block" />
+            <span className="text-green-400">på några minuter</span>
           </h1>
           
           <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
-            Discover awesome party games and delicious drink recipes
-            to make your next gathering unforgettable.
+            Upptäck våra förfest spel och drinkar som är perfekta för att sätta stämningen
+            för att klara av huvudfesten.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
