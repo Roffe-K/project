@@ -7,35 +7,32 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 
 function App() {
+  const afterDrinksRef = useRef<HTMLDivElement>(null);
+  const [hideGetStarted, setHideGetStarted] = useState(false);
+
   useEffect(() => {
-    // Update document title
-    document.title = 'PartyPrep - Games & Drinks';
-    
-    // Add smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href') || '');
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+    const handleScroll = () => {
+      if (afterDrinksRef.current) {
+        const top = afterDrinksRef.current.getBoundingClientRect().top;
+        setHideGetStarted(top <= 60); // 60px för headerhöjd
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <GamesSection />
-        <DrinksSection />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Header hideGetStarted={hideGetStarted} />
+      {/* ...din kod för drinksektionen... */}
+      <div id="drinks">
+        {/* Drinksektionen */}
+      </div>
+      <div ref={afterDrinksRef}>
+        {/* Sektionen efter drinkarna */}
+      </div>
+      {/* ...resten av din app... */}
+    </>
   );
 }
 
