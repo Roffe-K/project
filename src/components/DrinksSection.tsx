@@ -10,7 +10,7 @@ const drinks = [
     ingredients: ['7 delar valfri vodka', '3 delar sprite'],
     preparationTime: '5 min',
     alcoholic: true,
-    image: 'https://images.pexels.com/photos/2795026/pexels-photo-2795026.jpeg'
+    image: 'https://cdn.discordapp.com/attachments/458008375536517120/1373361716729090178/IMG_3244.jpg?ex=682a2245&is=6828d0c5&hm=b1bf2952f448ce9adbd69a7f5fa52879af5e8f1678318776b6af4186e44c63b3&'
   },
   {
     id: 2,
