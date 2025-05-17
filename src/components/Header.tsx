@@ -82,39 +82,43 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
-          <nav className="flex flex-col py-4 px-4 space-y-4">
-            <Link href="#games" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Spel' : 'Games'}
-            </Link>
-            <Link href="#drinks" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Drinkar' : 'Drinks'}
-            </Link>
-            <Link href="#about" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Om oss' : 'About'}
-            </Link>
-            <Link
-              href="#get-started"
-              onClick={() => setIsOpen(false)}
-              className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
-            >
-              {lang === 'sv' ? 'Börja nu' : 'Get Started'}
-            </Link>
+{/* Mobile flag dropdown */}
+<div className="flex justify-center pt-2 relative">
+  <button
+    onClick={() => setShowLang(!showLang)}
+    className="focus:outline-none"
+  >
+    <Flag
+      code={lang === 'sv' ? 'SE' : 'US'}
+      style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }}
+    />
+  </button>
 
-            {/* Mobile flag toggle */}
-            <div className="flex justify-center pt-2">
-              <button
-                onClick={() => setLang(lang === 'sv' ? 'en' : 'sv')}
-                className="focus:outline-none"
-              >
-                <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
-              </button>
-            </div>
-          </nav>
-        </div>
-      )}
+  {showLang && (
+    <div className="absolute top-full mt-2 bg-white text-black shadow-md rounded z-50 w-40">
+      <button
+        onClick={() => {
+          setLang('sv');
+          setShowLang(false);
+        }}
+        className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+      >
+        <Flag code="SE" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+        Svenska
+      </button>
+      <button
+        onClick={() => {
+          setLang('en');
+          setShowLang(false);
+        }}
+        className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-left"
+      >
+        <Flag code="US" style={{ width: 20, height: 14, marginRight: 8, borderRadius: 4 }} />
+        English
+      </button>
+    </div>
+  )}
+</div>
     </header>
   );
 };
