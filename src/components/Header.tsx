@@ -66,21 +66,25 @@ const Header = () => {
       </div>
 
       {/* Mobile nav */}
-{isOpen && (
-  <div className="lg:hidden absolute top-full left-0 right-0 bg-gray-900 shadow-xl">
-    <nav className="flex flex-col py-4 px-4 space-y-4">
-      <Link href="#games" onClick={() => setIsOpen(false)}>Spel</Link>
-      <Link href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</Link>
-      <Link href="#about" onClick={() => setIsOpen(false)}>Om oss</Link>
-      <Link 
-        href="#get-started" 
-        onClick={() => setIsOpen(false)}
-        className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
+      <div 
+        className={`lg:hidden absolute top-full left-0 right-0 bg-gray-900 shadow-xl transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-y-0' : '-translate-y-full'
+        }`}
       >
-        Börja nu
-      </Link>
-    </nav>
-  </div>
+        <nav className="flex flex-col py-4 px-4 space-y-4">
+          <Link href="#games" onClick={() => setIsOpen(false)}>Spel</Link>
+          <Link href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</Link>
+          <Link href="#about" onClick={() => setIsOpen(false)}>Om oss</Link>
+          <Link 
+            href="#get-started" 
+            onClick={() => setIsOpen(false)}
+            className="bg-green-500 hover:bg-green-600 transition-colors duration-300 text-white font-semibold py-2 px-4 rounded-full text-center"
+          >
+            Börja nu
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 };
 
