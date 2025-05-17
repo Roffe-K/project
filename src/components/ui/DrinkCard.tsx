@@ -17,9 +17,9 @@ const DrinkCard: React.FC<DrinkProps> = ({ drink }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 group h-full">
-      <div className="flex flex-col lg:flex-row h-full">
-        <div className="w-full lg:w-1/3 h-64 lg:h-auto relative">
+    <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 group">
+      <div className="flex flex-col">
+        <div className="w-full h-64 relative">
           <img 
             src={drink.image} 
             alt={drink.title} 
@@ -40,15 +40,13 @@ const DrinkCard: React.FC<DrinkProps> = ({ drink }) => {
           </div>
         </div>
         
-        <div className="p-6 w-full lg:w-2/3 h-full flex flex-col justify-between">
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">{drink.title}</h3>
-            <p className="text-gray-300 mb-4">{drink.description}</p>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-white mb-2">{drink.title}</h3>
+          <p className="text-gray-300 mb-4">{drink.description}</p>
 
-            <div className="flex items-center text-sm text-gray-400 mb-4">
-              <Clock className="h-4 w-4 mr-1" />
-              <span>{drink.preparationTime} preparation</span>
-            </div>
+          <div className="flex items-center text-sm text-gray-400 mb-4">
+            <Clock className="h-4 w-4 mr-1" />
+            <span>{drink.preparationTime} preparation</span>
           </div>
 
           <div className={`transition-all duration-300 overflow-hidden ${expanded ? 'max-h-48' : 'max-h-0'}`}>
