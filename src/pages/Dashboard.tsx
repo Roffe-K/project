@@ -8,15 +8,6 @@ import { useAuth } from '../contexts/AuthContext';
 import Header from '../components/Header';
 
 const Dashboard = () => {
-  return (
-    <div>
-      <Header />   // ✅ måste finnas
-      ...
-    </div>
-  );
-};
-
-const Dashboard = () => {
   const { user } = useAuth();
 
   useEffect(() => {
@@ -25,6 +16,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
+      <Header />
       <main>
         <Hero />
         <GamesSection showLockedContent={!!user} />
