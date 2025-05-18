@@ -11,5 +11,6 @@ export default defineConfig({
     host: true,
     port: 5173,
     https: false, // ⛔ stäng av internt https
+    allowedHosts: ['dev.styxnetwork.se'], // ⬅️ tillåt din domän
   },
 });
