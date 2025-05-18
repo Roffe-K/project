@@ -2,26 +2,23 @@ import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import GamesSection from '../components/GamesSection';
 import DrinksSection from '../components/DrinksSection';
-import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
-import Header from '../components/Header';
 
 const Dashboard = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    document.title = 'PartyPrep - Dashboard';
+    document.title = 'PartyPrep - Start';
   }, []);
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      <Header />
       <main>
         <Hero />
         <GamesSection showLockedContent={!!user} />
         <DrinksSection showLockedContent={!!user} />
-        <CTA />
+        {/* CTA är borttagen */}
       </main>
       <Footer />
     </div>
