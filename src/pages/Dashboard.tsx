@@ -5,6 +5,16 @@ import DrinksSection from '../components/DrinksSection';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
+import Header from '../components/Header';
+
+const Dashboard = () => {
+  return (
+    <div>
+      <Header />   // ✅ måste finnas
+      ...
+    </div>
+  );
+};
 
 const Dashboard = () => {
   const { user } = useAuth();
