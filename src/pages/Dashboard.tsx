@@ -4,6 +4,7 @@ import GamesSection from '../components/GamesSection';
 import DrinksSection from '../components/DrinksSection';
 import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
+import Header from '../components/Header';
 
 const Dashboard = () => {
   const { user } = useAuth();
