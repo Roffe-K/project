@@ -13,7 +13,7 @@ const Profile = () => {
   const [uploading, setUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState('');
 
-  // Hämta användarens data
+  // Hämta användardata
   useEffect(() => {
     if (user) {
       const fetchData = async () => {
@@ -36,10 +36,10 @@ const Profile = () => {
         nickname,
         avatarUrl,
       });
-      alert('Profil sparad!');
+      alert('✅ Profil sparad!');
     } catch (err) {
-      console.error('Fel vid sparning:', err);
-      alert('Något gick fel.');
+      console.error('❌ Fel vid sparning:', err);
+      alert('🚫 Något gick fel vid sparning.');
     }
   };
 
@@ -47,9 +47,9 @@ const Profile = () => {
     if (!user || !e.target.files || !e.target.files[0]) return;
     const file = e.target.files[0];
 
-    // Kontrollera filstorlek
+    // Storlekskontroll
     if (file.size > MAX_SIZE_MB * 1024 * 1024) {
-      alert('Bilden är för stor. Max 2MB.');
+      alert('❌ Bilden är för stor. Max 2MB.');
       return;
     }
 
@@ -57,15 +57,19 @@ const Profile = () => {
     setUploading(true);
 
     try {
+      console.log('🚀 Startar uppladdning:', file.name, file.size, 'bytes');
       await uploadBytes(storageRef, file);
+      console.log('✅ Uppladdning klar till:', storageRef.fullPath);
+
       const url = await getDownloadURL(storageRef);
-      console.log('✅ avatarUrl:', url);
+      console.log('✅ Hämtade avatar URL:', url);
+
       setAvatarUrl(url);
       setPreviewUrl(url);
-      alert('Bild uppladdad!');
+      alert('✅ Bild uppladdad!');
     } catch (error) {
-      console.error('Fel vid uppladdning:', error);
-      alert('Kunde inte ladda upp bilden.');
+      console.error('❌ Fel vid uppladdning:', error);
+      alert('🚫 Kunde inte ladda upp bilden.');
     } finally {
       setUploading(false);
     }
