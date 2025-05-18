@@ -4,6 +4,8 @@ import Flag from 'react-world-flags';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link as UiLink } from './ui/Link';
 import { useAuth } from '../contexts/AuthContext';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +16,28 @@ const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  const [nickname, setNickname] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState('');
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      const fetchProfile = async () => {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists()) {
+          const data = snap.data();
+          setNickname(data.nickname || '');
+          setAvatarUrl(data.avatarUrl || '');
+        }
+      };
+      fetchProfile();
+    }
+  }, [user]);
 
   const handleLogout = async () => {
     await logout();
@@ -59,6 +78,14 @@ const Header = () => {
             {user ? (
               <>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
+                <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt="Avatar" className="h-6 w-6 rounded-full object-cover" />
+                  ) : (
+                    <span className="bg-gray-700 rounded-full px-2 text-sm">{nickname || user.email?.split('@')[0]}</span>
+                  )}
+                  <span>Min profil</span>
+                </RouterLink>
                 <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Logga ut</button>
               </>
             ) : (
@@ -67,7 +94,6 @@ const Header = () => {
               </RouterLink>
             )}
 
-            {/* Språk */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
                 <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
@@ -87,7 +113,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Burger */}
+          {/* Mobile menu button */}
           <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white p-2">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -122,7 +148,15 @@ const Header = () => {
 
             {user ? (
               <>
-                <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className="text-white font-semibold text-center">Dashboard</RouterLink>
+                <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className="text-white font-semibold">Dashboard</RouterLink>
+                <RouterLink to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-white font-semibold">
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt="Avatar" className="h-6 w-6 rounded-full object-cover" />
+                  ) : (
+                    <span className="bg-gray-700 rounded-full px-2 text-sm">{nickname || user.email?.split('@')[0]}</span>
+                  )}
+                  <span>Min profil</span>
+                </RouterLink>
                 <button onClick={() => { handleLogout(); setIsOpen(false); }} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Logga ut</button>
               </>
             ) : (
