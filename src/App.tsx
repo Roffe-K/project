@@ -58,7 +58,6 @@ const App = () => {
               <PrivateRoute>
                 <>
                   <Header />
-                  <Hero />
                   <Dashboard />
                 </>
               </PrivateRoute>
