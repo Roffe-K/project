@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PartyPopper as Party, Menu, X, Lock } from 'lucide-react';
+import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link as UiLink } from './ui/Link';
@@ -55,23 +55,12 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <UiLink href="#games" className="relative inline-block">
-              <span className="inline-block relative">
-                <span className="relative z-10">Spel</span>
-                {!user && (
-                  <Lock className="absolute top-0 left-0 h-3 w-3 text-gray-400 z-20 -translate-x-1 -translate-y-1" />
-                )}
-              </span>
-            </UiLink>
-
-            <UiLink href="#drinks" className="relative inline-block">
-              <span className="inline-block relative">
-                <span className="relative z-10">Drinkar</span>
-                {!user && (
-                  <Lock className="absolute top-0 right-0 h-3 w-3 text-gray-400 z-20 translate-x-1 -translate-y-1" />
-                )}
-              </span>
-            </UiLink>
+            {user && (
+              <>
+                <UiLink href="#games">Spel</UiLink>
+                <UiLink href="#drinks">Drinkar</UiLink>
+              </>
+            )}
 
             <UiLink href="#about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
 
@@ -124,23 +113,12 @@ const Header = () => {
       {isOpen && (
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
-            <UiLink href="#games" onClick={() => setIsOpen(false)} className="relative inline-block">
-              <span className="inline-block relative">
-                <span className="relative z-10">Spel</span>
-                {!user && (
-                  <Lock className="absolute top-0 left-0 h-3 w-3 text-gray-400 z-20 -translate-x-1 -translate-y-1" />
-                )}
-              </span>
-            </UiLink>
-
-            <UiLink href="#drinks" onClick={() => setIsOpen(false)} className="relative inline-block">
-              <span className="inline-block relative">
-                <span className="relative z-10">Drinkar</span>
-                {!user && (
-                  <Lock className="absolute top-0 right-0 h-3 w-3 text-gray-400 z-20 translate-x-1 -translate-y-1" />
-                )}
-              </span>
-            </UiLink>
+            {user && (
+              <>
+                <UiLink href="#games" onClick={() => setIsOpen(false)}>Spel</UiLink>
+                <UiLink href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</UiLink>
+              </>
+            )}
 
             <UiLink href="#about" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Om oss' : 'About'}
