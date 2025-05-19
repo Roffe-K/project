@@ -34,6 +34,7 @@ const LandingPage = () => {
     <div className="bg-gray-900 text-white min-h-screen">
       {/* Header and Hero removed for unauthenticated users */}
       <main>
+        <Header />
         <CTA />
         <GamesSection />
         <DrinksSection />
