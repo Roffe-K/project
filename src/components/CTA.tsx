@@ -1,7 +1,10 @@
 import React from 'react';
 import { GlassWater, PartyPopper as Party, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Importera useNavigate
 
 const CTA = () => {
+  const navigate = useNavigate(); // Skapa navigationsfunktion
+
   return (
     <section id="get-started" className="py-16 px-4 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
       <div className="container mx-auto">
@@ -24,7 +27,10 @@ const CTA = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-green-500 hover:bg-green-600 text-white py-3 px-8 rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center">
+            <button 
+              onClick={() => navigate('/login')} // Navigera till /login vid klick
+              className="bg-green-500 hover:bg-green-600 text-white py-3 px-8 rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center"
+            >
               Get Started
               <ChevronRight className="ml-1 h-5 w-5" />
             </button>
