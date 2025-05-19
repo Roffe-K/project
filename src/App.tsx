@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import Profile from './pages/Profile'; // ✅ ny import
+import Profile from './pages/Profile';
 
 const LandingPage = () => {
   useEffect(() => {
@@ -32,12 +32,11 @@ const LandingPage = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      <Header />
+      {/* Header and Hero removed for unauthenticated users */}
       <main>
-        <Hero />
+        <CTA />
         <GamesSection />
         <DrinksSection />
-        <CTA />
       </main>
       <Footer />
     </div>
@@ -56,7 +55,11 @@ const App = () => {
             path="/dashboard"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <>
+                  <Header />
+                  <Hero />
+                  <Dashboard />
+                </>
               </PrivateRoute>
             }
           />
@@ -64,7 +67,11 @@ const App = () => {
             path="/profile"
             element={
               <PrivateRoute>
-                <Profile />
+                <>
+                  <Header />
+                  <Hero />
+                  <Profile />
+                </>
               </PrivateRoute>
             }
           />
