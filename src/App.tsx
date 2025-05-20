@@ -60,7 +60,7 @@ const AppWrapper = () => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+      <div className="fixed inset-0 flex items-center justify-center bg-black z-50 animate-fade-in-out">
         <Party className="h-12 w-12 text-green-400 animate-spin" />
       </div>
     );
