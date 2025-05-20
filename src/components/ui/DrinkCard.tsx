@@ -17,7 +17,11 @@ const DrinkCard: React.FC<DrinkProps> = ({ drink }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 group">
+    <div
+      className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 group"
+      data-aos="fade-up"
+      data-aos-once="true"
+    >
       <div className="flex flex-col">
         <div className="w-full h-64 relative hidden">
           <img 
