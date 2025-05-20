@@ -15,6 +15,9 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const LandingPage = () => {
   useEffect(() => {
     document.title = 'PartyPrep - Games & Drinks';
@@ -32,9 +35,8 @@ const LandingPage = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      {/* Header and Hero removed for unauthenticated users */}
+      <Header />
       <main>
-        <Header />
         <CTA />
         <GamesSection />
         <DrinksSection />
@@ -45,6 +47,14 @@ const LandingPage = () => {
 };
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 600,
+      easing: 'ease-out',
+    });
+  }, []);
+
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -58,6 +68,7 @@ const App = () => {
               <PrivateRoute>
                 <>
                   <Header />
+                  <Hero />
                   <Dashboard />
                 </>
               </PrivateRoute>
