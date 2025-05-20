@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 import Header from './components/Header';
@@ -46,7 +46,10 @@ const LandingPage = () => {
   );
 };
 
-const App = () => {
+// 👇 Wrapper för att visa spinner innan appen är redo
+const AppWrapper = () => {
+  const { loading } = useAuth();
+
   useEffect(() => {
     AOS.init({
       once: true,
@@ -55,41 +58,53 @@ const App = () => {
     });
   }, []);
 
+  if (loading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+        <div className="w-12 h-12 border-4 border-green-400 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <>
-                  <Header />
-                  <Hero />
-                  <Dashboard />
-                </>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <>
-                  <Header />
-                  <Hero />
-                  <Profile />
-                </>
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <>
+                <Header />
+                <Hero />
+                <Dashboard />
+              </>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <>
+                <Header />
+                <Hero />
+                <Profile />
+              </>
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 };
+
+const App = () => (
+  <AuthProvider>
+    <AppWrapper />
+  </AuthProvider>
+);
 
 export default App;
