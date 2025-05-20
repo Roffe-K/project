@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { PartyPopper as Party } from 'lucide-react';
 
 const LandingPage = () => {
   useEffect(() => {
@@ -46,7 +47,6 @@ const LandingPage = () => {
   );
 };
 
-// 👇 Wrapper för att visa spinner innan appen är redo
 const AppWrapper = () => {
   const { loading } = useAuth();
 
@@ -61,7 +61,7 @@ const AppWrapper = () => {
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
-        <div className="w-12 h-12 border-4 border-green-400 border-t-transparent rounded-full animate-spin" />
+        <Party className="h-12 w-12 text-green-400 animate-spin" />
       </div>
     );
   }
