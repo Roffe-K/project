@@ -22,7 +22,11 @@ const GameCard: React.FC<GameProps> = ({ game }) => {
 
   return (
     <>
-      <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300 transform hover:-translate-y-1 group">
+      <div
+        className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300 transform hover:-translate-y-1 group"
+        data-aos="fade-up"
+        data-aos-once="true"
+      >
         <div className="flex items-start mb-4">
           <div className="bg-gray-700 p-3 rounded-lg group-hover:bg-gray-900 transition-colors duration-300">
             {game.icon}
@@ -45,9 +49,9 @@ const GameCard: React.FC<GameProps> = ({ game }) => {
             </div>
           </div>
         </div>
-        
+
         <p className="text-gray-300 mb-4">{game.description}</p>
-        
+
         <div className="flex items-center text-sm text-gray-400 space-x-4 mb-4">
           <div className="flex items-center">
             <Users className="h-4 w-4 mr-1" />
