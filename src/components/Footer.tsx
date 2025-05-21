@@ -23,7 +23,7 @@ const Footer = () => {
                 <Twitter className="h-5 w-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                <Facebook className="h-5 w-5" />
+                <Tiktok className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -44,8 +44,8 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li><Link href="#">Cocktails</Link></li>
                 <li><Link href="#">Mocktails</Link></li>
-                <li><Link href="#">Punches</Link></li>
                 <li><Link href="#">Shot Recipes</Link></li>
+                <li><Link href="#">Homemades</Link></li>
               </ul>
             </div>
             
