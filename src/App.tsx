@@ -9,6 +9,7 @@ import GamesSection from './components/GamesSection';
 import DrinksSection from './components/DrinksSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import Contact from './pages/Contact';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -72,6 +73,7 @@ const AppWrapper = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Contact" element={<Contact />} />
         <Route
           path="/dashboard"
           element={
