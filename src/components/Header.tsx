@@ -143,7 +143,7 @@ const Header = () => {
               </>
             )}
 
-            <UiLink href="#about" onClick={() => setIsOpen(false)}>
+            <UiLink href="/about" onClick={() => setIsOpen(false)}>
               {lang === 'sv' ? 'Om oss' : 'About'}
             </UiLink>
 
