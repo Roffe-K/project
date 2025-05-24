@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import About from './pages/About';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -74,6 +75,7 @@ const AppWrapper = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/dashboard"
           element={
