@@ -74,7 +74,12 @@ const Header = () => {
               </>
             )}
 
-            <UiLink href="/about">{lang === 'sv' ? 'Om oss' : 'About'}</UiLink>
+            <UiLink
+              href="/about"
+              className={currentPath === '/about' ? 'text-green-400' : ''}
+              >
+              {lang === 'sv' ? 'Om oss' : 'About'}
+              </UiLink>
 
             {user ? (
               <>
