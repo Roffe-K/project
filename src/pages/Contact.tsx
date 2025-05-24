@@ -21,13 +21,13 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+    <div className="bg-gray-800 text-white min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-grow py-20 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-          {/* Info-text: mobil först, desktop vänster */}
+          {/* Info + bild */}
           <div className="order-1 md:order-1 text-gray-300" data-aos="fade-up">
             <h3 className="text-xl font-semibold mb-4">Varför kontakta oss?</h3>
             <p className="mb-4">
@@ -36,14 +36,21 @@ const Contact: React.FC = () => {
             <p className="mb-4">
               Vi svarar vanligtvis inom 24 timmar. Under helger kan det ta lite längre tid.
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 mb-6">
               PS. Vi gillar memes också, så skicka gärna några 🍻
             </p>
+
+            {/* Bild under text */}
+            <img
+              src="https://handelsnollning.se/wp-content/uploads/2019/07/Bild-N%C3%B6jes.jpg"
+              alt="Party illustration"
+              className="rounded-lg shadow-md border border-gray-700"
+            />
           </div>
 
-          {/* Formulär: mobil sist, desktop höger */}
+          {/* Formulär */}
           <div
-            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-700"
+            className="order-2 md:order-2 bg-gray-900 rounded-xl shadow-lg p-8 border-2 border-purple-500"
             data-aos="fade-up"
           >
             <h2 className="text-2xl font-bold mb-4">Kontakta oss</h2>
@@ -110,3 +117,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
