@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
 import { Link as UiLink } from './ui/Link';
 import { useAuth } from '../contexts/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
@@ -15,6 +15,7 @@ const Header = () => {
 
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [nickname, setNickname] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
@@ -44,8 +45,10 @@ const Header = () => {
     navigate('/');
   };
 
+  const currentPath = location.pathname;
+
   return (
-      <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4 transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -55,10 +58,19 @@ const Header = () => {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center space-x-6">
-            {user && (
+            {!user && (
               <>
-                <UiLink href="#games">Spel</UiLink>
-                <UiLink href="#drinks">Drinkar</UiLink>
+                {currentPath !== '/' && (
+                  <UiLink href="/" className="relative">
+                    Hem
+                  </UiLink>
+                )}
+                <UiLink
+                  href="/contact"
+                  className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
+                >
+                  Kontakt
+                </UiLink>
               </>
             )}
 
@@ -66,6 +78,8 @@ const Header = () => {
 
             {user ? (
               <>
+                <UiLink href="#games">Spel</UiLink>
+                <UiLink href="#drinks">Drinkar</UiLink>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
                 <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
                   {avatarUrl ? (
@@ -83,6 +97,7 @@ const Header = () => {
               </RouterLink>
             )}
 
+            {/* Språk */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
                 <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
@@ -113,10 +128,18 @@ const Header = () => {
       {isOpen && (
         <div className="lg:hidden bg-gray-900 shadow-xl absolute top-full left-0 right-0 z-40">
           <nav className="flex flex-col py-4 px-4 space-y-4">
-            {user && (
+            {!user && (
               <>
-                <UiLink href="#games" onClick={() => setIsOpen(false)}>Spel</UiLink>
-                <UiLink href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</UiLink>
+                {currentPath !== '/' && (
+                  <UiLink href="/" onClick={() => setIsOpen(false)}>Hem</UiLink>
+                )}
+                <UiLink
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className={currentPath === '/contact' ? 'text-green-400' : ''}
+                >
+                  Kontakt
+                </UiLink>
               </>
             )}
 
@@ -126,6 +149,8 @@ const Header = () => {
 
             {user ? (
               <>
+                <UiLink href="#games" onClick={() => setIsOpen(false)}>Spel</UiLink>
+                <UiLink href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</UiLink>
                 <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className="text-white font-semibold">Dashboard</RouterLink>
                 <RouterLink to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-white font-semibold">
                   {avatarUrl ? (
