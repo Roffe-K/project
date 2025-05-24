@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
 
           {/* Formulär */}
           <div
-            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border-2 border-green-500"
+            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border-4 border-gray-600"
             data-aos="fade-up"
           >
             <h2 className="text-2xl font-bold mb-4">Kontakta oss</h2>
