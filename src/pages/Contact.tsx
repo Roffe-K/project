@@ -31,13 +31,10 @@ const Contact: React.FC = () => {
           <div className="order-1 md:order-1 text-gray-300" data-aos="fade-up">
             <h3 className="text-xl font-semibold mb-4">Varför kontakta oss?</h3>
             <p className="mb-4">
-              Vi älskar att höra från dig! Oavsett om du har feedback, vill rapportera ett fel, föreslå ett spel eller bara säga hej – tveka inte.
+              Vi älskar att höra från dig! Oavsett om du har feedback, vill rapportera ett fel, föreslå ett spel eller föreslå ett samarbete – tveka inte.
             </p>
             <p className="mb-4">
               Vi svarar vanligtvis inom 24 timmar. Under helger kan det ta lite längre tid.
-            </p>
-            <p className="text-sm text-gray-500 mb-6">
-              PS. Vi gillar memes också, så skicka gärna några 🍻
             </p>
 
             {/* Bild under text */}
@@ -50,7 +47,7 @@ const Contact: React.FC = () => {
 
           {/* Formulär */}
           <div
-            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border-4 border-gray-600"
+            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border-3 border-gray-700"
             data-aos="fade-up"
           >
             <h2 className="text-2xl font-bold mb-4">Kontakta oss</h2>
