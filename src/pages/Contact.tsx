@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
 
           {/* Formulär */}
           <div
-            className="order-2 md:order-2 bg-gray-900 rounded-xl shadow-lg p-8 border-2 border-purple-500"
+            className="order-2 md:order-2 bg-gray-800 rounded-xl shadow-lg p-8 border-2 border-green-500"
             data-aos="fade-up"
           >
             <h2 className="text-2xl font-bold mb-4">Kontakta oss</h2>
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   value={form.name}
                   required
-                  className="w-full bg-gray-700 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full bg-gray-800 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
 
@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   value={form.email}
                   required
-                  className="w-full bg-gray-700 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full bg-gray-800 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
               </div>
 
@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   value={form.message}
                   required
-                  className="w-full bg-gray-700 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                  className="w-full bg-gray-800 text-white rounded-md p-3 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
                 />
               </div>
 
