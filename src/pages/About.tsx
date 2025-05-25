@@ -4,19 +4,9 @@ import Footer from '../components/Footer';
 
 const team = [
   {
-    name: 'Robin K.',
+    name: 'Adam Simonsson',
     role: 'Grundare & Utvecklare',
-    image: '/images/robin.jpg',
-  },
-  {
-    name: 'Sofia L.',
-    role: 'Design & UI',
-    image: '/images/sofia.jpg',
-  },
-  {
-    name: 'Anton J.',
-    role: 'Test & Feedback',
-    image: '/images/anton.jpg',
+    image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2665258%2Fman_management_unidentified_unknown_user_visitor_icon&psig=AOvVaw0s_5v1vX5gNgMzH6b8Z1vG&ust=1748275810730000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjm8oiBv40DFQAAAAAdAAAAABAL',
   },
 ];
 
