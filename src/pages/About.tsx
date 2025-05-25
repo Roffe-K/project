@@ -6,7 +6,7 @@ const team = [
   {
     name: 'Adam Simonsson',
     role: 'Grundare & Utvecklare',
-    image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2665258%2Fman_management_unidentified_unknown_user_visitor_icon&psig=AOvVaw0s_5v1vX5gNgMzH6b8Z1vG&ust=1748275810730000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjm8oiBv40DFQAAAAAdAAAAABAL',
+    image: 'https://cdn3.iconfinder.com/data/icons/flat-pro-user-management-set-4/32/user-unknown-512.png',
   },
 ];
 
