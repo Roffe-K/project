@@ -61,16 +61,16 @@ const Header = () => {
             {!user && (
               <>
                 {currentPath !== '/' && (
-                  <RouterLink href="/" className="relative">
+                  <UiLink href="/" className="relative">
                     Hem
-                  </RouterLink>
+                  </UiLink>
                 )}
-                <RouterLink
+                <UiLink
                   href="/contact"
                   className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
                 >
                   Kontakt
-                </RouterLink>
+                </UiLink>
               </>
             )}
 
@@ -83,7 +83,7 @@ const Header = () => {
 
             {user ? (
               <>
-                <RouterLink to="/games" className="text-white hover:text-green-400">Spel</RouterLink>
+                <UiLink href="#games">Spel</UiLink>
                 <UiLink href="#drinks">Drinkar</UiLink>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
                 <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
