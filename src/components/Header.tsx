@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { PartyPopper as Party, Menu, X } from 'lucide-react';
 import Flag from 'react-world-flags';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
-import { Link as UiLink } from './ui/Link';
 import { useAuth } from '../contexts/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -16,6 +15,7 @@ const Header = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const currentPath = location.pathname;
 
   const [nickname, setNickname] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
@@ -45,8 +45,6 @@ const Header = () => {
     navigate('/');
   };
 
-  const currentPath = location.pathname;
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4 transition-all duration-300">
       <div className="container mx-auto px-4">
@@ -60,31 +58,18 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-6">
             {!user && (
               <>
-                {currentPath !== '/' && (
-                  <RouterLink to="/" className="relative">
-                    Hem
-                  </RouterLink>
-                )}
-                <RouterLink
-                  to="/contact"
-                  className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
-                >
-                  Kontakt
+                {currentPath !== '/' && <RouterLink to="/" className="relative">Hem</RouterLink>}
+                <RouterLink to="/contact" className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}>Kontakt</RouterLink>
+                <RouterLink to="/about" className={currentPath === '/about' ? 'text-green-400' : ''}>
+                  {lang === 'sv' ? 'Om oss' : 'About'}
                 </RouterLink>
               </>
             )}
 
-            <RouterLink
-              to="/about"
-              className={currentPath === '/about' ? 'text-green-400' : ''}
-              >
-              {lang === 'sv' ? 'Om oss' : 'About'}
-              </RouterLink>
-
-            {user ? (
+            {user && (
               <>
-                <UiLink href="#games">Spel</UiLink>
-                <UiLink href="#drinks">Drinkar</UiLink>
+                <RouterLink to="/games" className={`text-white hover:text-green-400 transition-colors ${currentPath === '/games' ? 'text-green-400' : ''}`}>Spel</RouterLink>
+                <RouterLink to="/drinks" className={`text-white hover:text-green-400 transition-colors ${currentPath === '/drinks' ? 'text-green-400' : ''}`}>Drinkar</RouterLink>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
                 <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
                   {avatarUrl ? (
@@ -96,13 +81,15 @@ const Header = () => {
                 </RouterLink>
                 <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Logga ut</button>
               </>
-            ) : (
+            )}
+
+            {!user && (
               <RouterLink to="/login" className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full">
                 {lang === 'sv' ? 'Börja nu' : 'Get Started'}
               </RouterLink>
             )}
 
-            {/* Språk */}
+            {/* Språkval */}
             <div className="relative ml-4">
               <button onClick={() => setShowLang(!showLang)} className="focus:outline-none">
                 <Flag code={lang === 'sv' ? 'SE' : 'US'} style={{ width: 32, height: 20, objectFit: 'cover', borderRadius: 6 }} />
@@ -135,27 +122,16 @@ const Header = () => {
           <nav className="flex flex-col py-4 px-4 space-y-4">
             {!user && (
               <>
-                {currentPath !== '/' && (
-                  <UiLink href="/" onClick={() => setIsOpen(false)}>Hem</UiLink>
-                )}
-                <UiLink
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className={currentPath === '/contact' ? 'text-green-400' : ''}
-                >
-                  Kontakt
-                </UiLink>
+                {currentPath !== '/' && <RouterLink to="/" onClick={() => setIsOpen(false)}>Hem</RouterLink>}
+                <RouterLink to="/contact" onClick={() => setIsOpen(false)} className={currentPath === '/contact' ? 'text-green-400' : ''}>Kontakt</RouterLink>
+                <RouterLink to="/about" onClick={() => setIsOpen(false)} className={currentPath === '/about' ? 'text-green-400' : ''}>{lang === 'sv' ? 'Om oss' : 'About'}</RouterLink>
               </>
             )}
 
-            <UiLink href="/about" onClick={() => setIsOpen(false)}>
-              {lang === 'sv' ? 'Om oss' : 'About'}
-            </UiLink>
-
-            {user ? (
+            {user && (
               <>
-                <UiLink href="#games" onClick={() => setIsOpen(false)}>Spel</UiLink>
-                <UiLink href="#drinks" onClick={() => setIsOpen(false)}>Drinkar</UiLink>
+                <RouterLink to="/games" onClick={() => setIsOpen(false)} className={`text-white ${currentPath === '/games' ? 'text-green-400' : ''}`}>Spel</RouterLink>
+                <RouterLink to="/drinks" onClick={() => setIsOpen(false)} className={`text-white ${currentPath === '/drinks' ? 'text-green-400' : ''}`}>Drinkar</RouterLink>
                 <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className="text-white font-semibold">Dashboard</RouterLink>
                 <RouterLink to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-white font-semibold">
                   {avatarUrl ? (
@@ -167,7 +143,9 @@ const Header = () => {
                 </RouterLink>
                 <button onClick={() => { handleLogout(); setIsOpen(false); }} className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Logga ut</button>
               </>
-            ) : (
+            )}
+
+            {!user && (
               <RouterLink to="/login" onClick={() => setIsOpen(false)} className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full text-center">
                 {lang === 'sv' ? 'Börja nu' : 'Get Started'}
               </RouterLink>
