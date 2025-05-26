@@ -61,12 +61,12 @@ const Header = () => {
             {!user && (
               <>
                 {currentPath !== '/' && (
-                  <UiLink href="/" className="relative">
+                  <RouterLink to="/" className="relative">
                     Hem
-                  </UiLink>
+                  </RouterLink>
                 )}
                 <RouterLink
-                  href="/contact"
+                  to="/contact"
                   className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
                 >
                   Kontakt
@@ -75,7 +75,7 @@ const Header = () => {
             )}
 
             <RouterLink
-              href="/about"
+              to="/about"
               className={currentPath === '/about' ? 'text-green-400' : ''}
               >
               {lang === 'sv' ? 'Om oss' : 'About'}
