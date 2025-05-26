@@ -61,16 +61,16 @@ const Header = () => {
             {!user && (
               <>
                 {currentPath !== '/' && (
-                  <UiLink href="/" className="relative">
+                  <RouterLink href="/" className="relative">
                     Hem
-                  </UiLink>
+                  </RouterLink>
                 )}
-                <UiLink
+                <RouterLink
                   href="/contact"
                   className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
                 >
                   Kontakt
-                </UiLink>
+                </RouterLink>
               </>
             )}
 
