@@ -65,21 +65,21 @@ const Header = () => {
                     Hem
                   </UiLink>
                 )}
-                <UiLink
+                <RouterLink
                   href="/contact"
                   className={`relative ${currentPath === '/contact' ? 'text-green-400' : ''}`}
                 >
                   Kontakt
-                </UiLink>
+                </RouterLink>
               </>
             )}
 
-            <UiLink
+            <RouterLink
               href="/about"
               className={currentPath === '/about' ? 'text-green-400' : ''}
               >
               {lang === 'sv' ? 'Om oss' : 'About'}
-              </UiLink>
+              </RouterLink>
 
             {user ? (
               <>
