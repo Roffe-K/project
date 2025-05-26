@@ -10,6 +10,7 @@ import DrinksSection from './components/DrinksSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
+import Games from './pages/Games';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -84,6 +85,18 @@ const AppWrapper = () => {
                 <Header />
                 <Hero />
                 <Dashboard />
+              </>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/games"
+          element={
+            <PrivateRoute>
+              <>
+                <Header />
+                <Hero />
+                <Games />
               </>
             </PrivateRoute>
           }
