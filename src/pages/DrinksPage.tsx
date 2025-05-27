@@ -3,6 +3,8 @@ import { Search, Filter, ArrowUp } from 'lucide-react';
 import DrinksList from '../components/drinks/DrinksList';
 import SearchFilters from '../components/drinks/SearchFilters';
 import { allDrinks } from '../data/drinks';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const DrinksPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
