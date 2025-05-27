@@ -11,6 +11,8 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Games from './pages/Games';
+import DrinksPage from './pages/DrinksPage';
+import DrinkDetailPage from './pages/DrinkDetailPage';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -77,6 +79,8 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
+        <Route path="/drinks" element={<PrivateRoute><DrinksPage /></PrivateRoute>} />
+        <Route path="/drinks/:id" element={<PrivateRoute><DrinkDetailPage /></PrivateRoute>} />
         <Route
           path="/dashboard"
           element={
