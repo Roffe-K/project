@@ -79,7 +79,7 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
-        <Route path="/drinks" element={<PrivateRoute><Header /><DrinksPage /></PrivateRoute>} />
+        <Route path="/drinks" element={<PrivateRoute><DrinksPage /></PrivateRoute>} />
         <Route path="/drinks/:id" element={<PrivateRoute><DrinkDetailPage /></PrivateRoute>} />
         <Route
           path="/dashboard"
