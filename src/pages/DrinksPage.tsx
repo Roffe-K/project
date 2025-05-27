@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Filter, ArrowUp } from 'lucide-react';
-import DrinksList from '../components/drinks/DrinksList';
-import SearchFilters from '../components/drinks/SearchFilters';
+import DrinksList from '../components/drinks/DrinksList.tsx';
+import SearchFilters from '../components/drinks/SearchFilters.tsx/index.ts';
 import { allDrinks } from '../data/drinks';
 
 const DrinksPage: React.FC = () => {
