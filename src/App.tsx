@@ -12,6 +12,8 @@ import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Games from './pages/Games';
 import Drinks from './pages/DrinksPage';
+import DrinkDetailPage from './pages/DrinkDetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -78,6 +80,7 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
+        <Route path="/drinks" element={<DrinksPage />} />
         <Route
           path="/dashboard"
           element={
