@@ -42,6 +42,8 @@ const DrinksPage: React.FC = () => {
   const categories = ['all', ...new Set(allDrinks.map(drink => drink.category || 'uncategorized'))];
 
   return (
+    <div className="pt-24"> {/* lägger space så header inte överlappar */}
+
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-900 to-purple-700 py-20 px-4">
