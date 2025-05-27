@@ -44,9 +44,9 @@ const DrinksPage: React.FC = () => {
   const categories = ['all', ...new Set(allDrinks.map(drink => drink.category || 'uncategorized'))];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       <Header />
-      <div className="bg-gradient-to-r from-purple-900 to-purple-700 py-20 px-4">
+      <div className="py-16 px-4 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             Drink <span className="text-purple-300">Recipes</span>
