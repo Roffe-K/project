@@ -11,7 +11,7 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Games from './pages/Games';
-import DrinksePage from './pages/DrinksPage';
+import DrinksPage from './pages/DrinksPage';
 import DrinkDetailPage from './pages/DrinkDetailPage';
 
 import Login from './pages/Login';
