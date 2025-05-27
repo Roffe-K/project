@@ -1,6 +1,10 @@
+// src/components/GamesSection.tsx
 import React, { useState } from 'react';
-import { Award, Users, Timer, Zap, Beer, Dice1 as Dice, Music, Brain, ChevronRight } from 'lucide-react';
+import {
+  Award, Users, Zap, Beer, Music, Brain, ChevronRight,
+} from 'lucide-react';
 import GameCard from './ui/GameCard';
+import { useNavigate } from 'react-router-dom';
 
 const games = [
   {
@@ -15,10 +19,10 @@ const games = [
       'Each player starts with 10 fingers up',
       'Take turns saying "Never have I ever..." followed by something you haven\'t done',
       'Players who have done it must put a finger down',
-      'Last player with fingers up wins!'
+      'Last player with fingers up wins!',
     ],
     category: 'Drinking',
-    icon: <Beer className="h-5 w-5 text-yellow-400" />
+    icon: <Beer className="h-5 w-5 text-yellow-400" />,
   },
   {
     id: 2,
@@ -33,10 +37,10 @@ const games = [
       'When the game starts, first players drink',
       'After drinking, place cup at edge and flip it',
       'Next player goes once cup is flipped',
-      'First team to flip all cups wins!'
+      'First team to flip all cups wins!',
     ],
     category: 'Team',
-    icon: <Users className="h-5 w-5 text-green-400" />
+    icon: <Users className="h-5 w-5 text-green-400" />,
   },
   {
     id: 3,
@@ -51,10 +55,10 @@ const games = [
       'Play 5-10 seconds of a random song',
       'Other players write down guesses',
       'Points: 2 for artist + song, 1 for either',
-      'Highest score after all rounds wins!'
+      'Highest score after all rounds wins!',
     ],
     category: 'Music',
-    icon: <Music className="h-5 w-5 text-purple-400" />
+    icon: <Music className="h-5 w-5 text-purple-400" />,
   },
   {
     id: 4,
@@ -69,10 +73,10 @@ const games = [
       'Go around naming items in that category',
       'No repeats or hesitation allowed',
       'Fail = drink and pick new category',
-      'Keep going until everyone\'s tipsy!'
+      'Keep going until everyone\'s tipsy!',
     ],
     category: 'Word',
-    icon: <Brain className="h-5 w-5 text-blue-400" />
+    icon: <Brain className="h-5 w-5 text-blue-400" />,
   },
   {
     id: 5,
@@ -87,10 +91,10 @@ const games = [
       'Take turns drawing cards',
       'Follow the rule for each card',
       'Kings add drink to center cup',
-      'Last king drinks the center cup!'
+      'Last king drinks the center cup!',
     ],
     category: 'Cards',
-    icon: <Award className="h-5 w-5 text-red-400" />
+    icon: <Award className="h-5 w-5 text-red-400" />,
   },
   {
     id: 6,
@@ -105,20 +109,21 @@ const games = [
       'Two dancers face off each round',
       'Crowd votes on winner',
       'Loser drinks, winner continues',
-      'Last dancer standing wins!'
+      'Last dancer standing wins!',
     ],
     category: 'Active',
-    icon: <Zap className="h-5 w-5 text-pink-400" />
-  }
+    icon: <Zap className="h-5 w-5 text-pink-400" />,
+  },
 ];
 
 const GamesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const categories = ['All', 'Drinking', 'Team', 'Music', 'Word', 'Cards', 'Active'];
+  const navigate = useNavigate();
 
-  const filteredGames = selectedCategory === 'All' 
-    ? games 
-    : games.filter(game => game.category === selectedCategory);
+  const filteredGames = selectedCategory === 'All'
+    ? games
+    : games.filter((game) => game.category === selectedCategory);
 
   return (
     <section id="games" className="py-16 px-4 bg-gray-900">
@@ -128,12 +133,11 @@ const GamesSection = () => {
             Epic Party <span className="text-green-400">Games</span>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-            From pre-gaming to full-on parties, these games will get everyone involved 
-            and create unforgettable moments.
+            From pre-gaming to full-on parties, these games will get everyone involved and create unforgettable moments.
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {categories.map(category => (
+            {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -148,23 +152,24 @@ const GamesSection = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredGames.map((game, index) => (
             <div
               key={game.id}
               className="opacity-0 animate-fade-in"
-              style={{
-                animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`
-              }}
+              style={{ animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards` }}
             >
               <GameCard game={game} />
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
-          <button className="group bg-gray-800 hover:bg-gray-700 text-white py-3 px-8 rounded-full font-semibold text-lg transition-all duration-300 border border-gray-700 flex items-center justify-center mx-auto">
+          <button
+            onClick={() => navigate('/games')}
+            className="group bg-gray-800 hover:bg-gray-700 text-white py-3 px-8 rounded-full font-semibold text-lg transition-all duration-300 border border-gray-700 flex items-center justify-center mx-auto"
+          >
             Browse All Games
             <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
