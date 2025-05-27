@@ -68,8 +68,8 @@ const Header = () => {
 
             {user && (
               <>
-                <RouterLink to="/games" className={`relative ${currentPath === '/games' ? 'text-white font-semibold text-green-400' : ''}`}>Spel</RouterLink>
-                <RouterLink to="/drinks" className={`relative ${currentPath === '/drinks' ? 'text-white font-semibold text-green-400' : ''}`}>Drinkar</RouterLink>
+                <RouterLink to="/games" className={`text-white hover:text-green-400 transition-colors ${currentPath === '/games' ? 'text-green-400 font-semibold' : ''}`}>Spel</RouterLink>
+                <RouterLink to="/drinks" className={`text-white hover:text-green-400 transition-colors ${currentPath === '/drinks' ? 'text-green-400 font-semibold' : ''}`}>Drinkar</RouterLink>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
                 <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
                   {avatarUrl ? (
@@ -130,8 +130,8 @@ const Header = () => {
 
             {user && (
               <>
-                <RouterLink to="/games" onClick={() => setIsOpen(false)} className={`text-white ${currentPath === '/games' ? 'text-green-400' : ''}`}>Spel</RouterLink>
-                <RouterLink to="/drinks" onClick={() => setIsOpen(false)} className={`text-white ${currentPath === '/drinks' ? 'text-green-400' : ''}`}>Drinkar</RouterLink>
+                <RouterLink to="/games" onClick={() => setIsOpen(false)} className={`text-white hover:text-green-400 transition-colors ${currentPath === '/games' ? 'text-green-400 font-semibold' : ''}`}>Spel</RouterLink>
+                <RouterLink to="/drinks" onClick={() => setIsOpen(false)} className={`text-white hover:text-green-400 transition-colors ${currentPath === '/drinks' ? 'text-green-400 font-semibold' : ''}`}>Drinkar</RouterLink>
                 <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className="text-white font-semibold">Dashboard</RouterLink>
                 <RouterLink to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 text-white font-semibold">
                   {avatarUrl ? (
