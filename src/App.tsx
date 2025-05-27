@@ -11,6 +11,7 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
 import Games from './pages/Games';
+import Drinks from './pages/DrinksPage';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
