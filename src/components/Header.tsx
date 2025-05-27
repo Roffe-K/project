@@ -69,7 +69,12 @@ const Header = () => {
             {user && (
               <>
                 <RouterLink to="/games" className={`text-white hover:text-green-400 transition-colors ${currentPath === '/games' ? 'text-green-400 font-semibold' : ''}`}>Spel</RouterLink>
-                <RouterLink to="/drinks" className={`relative font-semibold ${currentPath === '/drinks' ? 'text-green-400' : 'text-white hover:text-green-400 transition-colors'}`}>Drinkar</RouterLink>
+                <RouterLink
+                  to="/drinks"
+                  className={`relative font-semibold ${currentPath === '/drinks' ? 'text-green-400' : 'text-white hover:text-green-400 transition-colors'}`}
+                >
+                  Drinkar
+                </RouterLink>
                 <RouterLink to="/dashboard" className="text-white font-semibold hover:text-green-400 transition-colors">Dashboard</RouterLink>
                 <RouterLink to="/profile" className="flex items-center gap-2 text-white hover:text-green-400 font-semibold">
                   {avatarUrl ? (
