@@ -77,8 +77,9 @@ const AppWrapper = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/games" element={<Games />} />
         <Route path="/drinks/:id" element={<PrivateRoute><DrinkDetailPage /></PrivateRoute>} />
         <Route
           path="/dashboard"
@@ -100,18 +101,6 @@ const AppWrapper = () => {
                 <Header />
                 <Hero />
                 <DrinksPage />
-              </>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/games"
-          element={
-            <PrivateRoute>
-              <>
-                <Header />
-                <Hero />
-                <Games />
               </>
             </PrivateRoute>
           }
